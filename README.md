@@ -1,146 +1,44 @@
+# DU Chatbot Project
 
-# 무료로 한국어🇰🇷 파인튜닝 모델 받아서 나만의 로컬 LLM 호스팅 하기(LangServe) + RAG 까지!!
+## 프로젝트 개요 (Project Overview)
+동서울대학교 학생과 직원들이 학교 정보를 손쉽게 접근하고 검색할 수 있도록 돕는 전용 챗봇을 개발한 프로젝트입니다. 현재 다양한 Cloud 기반의 LLM이 존재하지만, 보안이 중요한 기관(기업, 정부 등)에서는 사용이 어려운 상황입니다. 이러한 문제를 해결하기 위해, 내부 환경에서 구동 가능한 LLM을 구축하여 학교 정보 접근성의 개선을 목표로 하였습니다.
 
-## YouTube 튜토리얼
+## 주요 기능
+- **학교 정보 검색 및 처리**: 학과, 부서와 관련된 정보를 직접 검색하거나 문의하지 않고도, 챗봇을 통해 즉시 필요한 정보를 제공받을 수 있습니다.
+- **보안성 유지**: 내부 환경에서 안전하게 운용할 수 있도록 경량화와 성능 유지에 중점을 두어 개발하였습니다.
 
-아래의 영상을 시청하시면서 따라서 진행하세요.
+## 프로젝트 로드맵 (Project Roadmap)
+![스크린샷 2024-10-22 195158](https://github.com/user-attachments/assets/9db9a29b-bbd3-489e-a319-7ef2bafd4c6d)
 
+![동서울포스터_박병준 (1)](https://github.com/user-attachments/assets/a9f97108-81de-409e-a74d-423d571bc187)
+
+
+1. **모델 경량화**: Ollama 모델을 활용하여 성능을 최대한 유지하면서도 Quantization을 통해 모델을 경량화하였습니다.
+2. **모델 Fine-Tuning**: 학교 정보를 학습할 수 있도록 PEFT(QLoRA) 방법론을 통해 Fine-Tuning을 수행했습니다.
+3. **성능 향상**: 파라미터 변경 없이도 성능 향상을 도모할 수 있는 RAG(학습 및 검색) 구조를 사용하여 LLM의 성능을 강화하였습니다.
+
+## 직면한 문제들과 해결방식 (Challenges & Solutions)
+1. **GPU 제약**: 
+   - 문제: 한정된 4060Ti GPU로는 모델 응답 시간이 오래 걸려 상용화에 어려움이 있었습니다.
+   - 해결책: 모델 구동용 PC와 웹 및 Tokenizer 실행용 PC를 분리하여 GPU 부하를 분산하였습니다. 이를 통해 Inference 시간을 60초에서 8초로 대폭 단축할 수 있었습니다.
+
+2. **환경 설정 (Environment Setting)**:
+   - 문제: Windows 환경에서 4060Ti에 맞는 CUDA 설정과 Streamlit 버전 조정에 예상보다 많은 시간이 소요되었습니다.
+   - 해결책: 여러 차례의 테스트를 거쳐 최적의 설정값을 도출하였으며, 아래에 최종 사용한 환경 설정을 기록하였습니다.
+
+## 사용 환경 (Environment)
+- **GPU**: NVIDIA GeForce RTX 4060Ti
+- **CUDA Version**: 11.x
+- **Streamlit Version**: 1.x
+- **Python Version**: 3.x
+
+## 느낀점 (Reflection)
+본 프로젝트는 인공지능을 학습하면서 처음으로 수행한 프로젝트로, 프로젝트의 흐름을 이해하는 데 다소 시간이 걸렸으나 팀원들과의 협력으로 만족스러운 결과를 달성할 수 있었습니다. 이번 경험을 통해 향후 AI 발전 방향과 기술 접목에 대한 아이디어가 보다 명확해졌습니다.
+
+## 참고 자료 (Resources)
+프로젝트와 관련된 데모 영상을 통해 DU Chatbot의 작동 방식을 확인할 수 있습니다.
 [![데모 영상](https://img.youtube.com/vi/VkcaigvTrug/0.jpg)](https://youtu.be/VkcaigvTrug)
 
-
-## HuggingFace gguf 파일을 Ollama 로딩
-
-> HuggingFace-Hub 설치
-```bash
-pip install huggingface-hub
-```
-
-아래의 예시는 `EEVE-Korean-Instruct-10.8B-v1.0`
-- HF: https://huggingface.co/yanolja/EEVE-Korean-Instruct-10.8B-v1.0
-- GGUF: https://huggingface.co/heegyu/EEVE-Korean-Instruct-10.8B-v1.0-GGUF
-
-GGUF 파일을 다운로드 받기 위하여 https://huggingface.co/heegyu/EEVE-Korean-Instruct-10.8B-v1.0-GGUF 에서 원하는 .gguf 모델을 다운로드 받습니다.
-
-순서대로
-- `HuggingFace Repo`
-- .gguf 파일명
-- local-dir 설정
-- 심볼릭 링크 설정
-  
-```bash
-huggingface-cli download \
-  heegyu/EEVE-Korean-Instruct-10.8B-v1.0-GGUF \
-  ggml-model-Q5_K_M.gguf \
-  --local-dir 본인의_컴퓨터_다운로드폴더_경로 \
-  --local-dir-use-symlinks False
-```
-
-### Modelfile
-
-> EEVE-Korean-Instruct-10.8B-v1.0 예시
-```
-FROM ggml-model-Q5_K_M.gguf
-
-TEMPLATE """{{- if .System }}
-<s>{{ .System }}</s>
-{{- end }}
-<s>Human:
-{{ .Prompt }}</s>
-<s>Assistant:
-"""
-
-SYSTEM """A chat between a curious user and an artificial intelligence assistant. The assistant gives helpful, detailed, and polite answers to the user's questions."""
-
-PARAMETER stop <s>
-PARAMETER stop </s>
-```
-
-> openbuddy-llama2-13b 예시
-```
-FROM openbuddy-llama2-13b-v11.1.Q4_K_M.gguf
-
-TEMPLATE """{{- if .System }}
-<|im_start|>system {{ .System }}<|im_end|>
-{{- end }}
-<|im_start|>user
-{{ .Prompt }}<|im_end|>
-<|im_start|>assistant
-"""
-
-SYSTEM """"""
-
-PARAMETER stop <|im_start|>
-PARAMETER stop <|im_end|>
-```
-
-## Ollama 실행
-
-```bash
-ollama create EEVE-Korean-10.8B -f EEVE-Korean-Instruct-10.8B-v1.0-GGUF/Modelfile
-```
-
-Ollama 모델 목록
-
-```bash
-ollama list
-```
-
-Ollama 모델 실행
-
-```bash
-ollama run EEVE-Korean-10.8B:latest
-```
-
-## LangServe 에서 Ollama 체인 생성
-
-app 폴더 진입 후
-
-```bash
-python server.py
-```
-
-## ngrok 에서 터널링(포트 포워드)
-
-```bash
-ngrok http localhost:8000
-```
-![](./images/capture-20240411-035817.png)
-
-NGROK 도메인 등록 링크: https://dashboard.ngrok.com/cloud-edge/domains
-
-> 고정 도메인이 있는 경우
-```bash
-ngrok http --domain=poodle-deep-marmot.ngrok-free.app 8000
-```
-
-## GPU 사용량 모니터링
-
-Github Repo: https://github.com/tlkh/asitop
-
-```bash
-pip install asitop
-```
-
-패스워드 설정
-```bash
-sudo asitop
-```
-실행
-```bash
-asitop
-```
-
 ## License
+이 프로젝트의 소스코드를 활용할 때는 반드시 출처를 표기해 주시기 바랍니다.
 
-소스코드를 활용하실 때는 반드시 출처를 표기해 주시기 바랍니다.
-
-```
-MIT License
-
-Copyright (c) 2024, 테디노트
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of
-# DU_chatbot_project
-# DU_chatbot_project
