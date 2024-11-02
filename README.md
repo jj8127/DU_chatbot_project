@@ -26,10 +26,177 @@
    - 해결책: 여러 차례의 테스트를 거쳐 최적의 설정값을 도출하였으며, 아래에 최종 사용한 환경 설정을 기록하였습니다.
 
 ## 사용 환경 (Environment)
-- **GPU**: NVIDIA GeForce RTX 4060Ti
-- **CUDA Version**: 11.x
-- **Streamlit Version**: 1.x
-- **Python Version**: 3.x
+GPU: 4060Ti
+Cuda capavility: 8.9
+Cuda SDK: 11.8
+pytorch==2.2.2 torchvision==0.17.2 torchaudio==2.2.2 pytorch-cuda=11.8 -c pytorch -c nvidia
+[requirements.txt](https://github.com/user-attachments/files/17605967/requirements.txt)aiohttp==3.9.4
+aiosignal==1.3.1
+altair==5.3.0
+annotated-types==0.6.0
+antlr4-python3-runtime==4.9.3
+anyio==4.3.0
+attrs==23.2.0
+backoff==2.2.1
+beautifulsoup4==4.12.3
+blinker==1.7.0
+Brotli @ file:///C:/b/abs_3d36mno480/croot/brotli-split_1714483178642/work
+cachetools==5.3.3
+certifi==2024.2.2
+cffi==1.16.0
+chardet==5.2.0
+charset-normalizer @ file:///croot/charset-normalizer_1721748349566/work
+click==8.1.7
+colorama==0.4.6
+coloredlogs==15.0.1
+contourpy==1.2.1
+cryptography==42.0.5
+cycler==0.12.1
+dataclasses-json==0.6.4
+dataclasses-json-speakeasy==0.5.11
+Deprecated==1.2.14
+distro==1.9.0
+effdet==0.4.1
+emoji==2.11.0
+faiss-cpu==1.8.0
+fastapi==0.110.1
+filelock==3.13.4
+filetype==1.2.0
+Final2==0.0.1
+flatbuffers==24.3.25
+fonttools==4.51.0
+frozenlist==1.4.1
+fsspec==2024.3.1
+gitdb==4.0.11
+GitPython==3.1.43
+gmpy2 @ file:///C:/ci_311/gmpy2_1677743390134/work
+greenlet==3.0.3
+h11==0.14.0
+httpcore==1.0.5
+httpx==0.27.0
+httpx-sse==0.4.0
+huggingface-hub==0.26.0
+humanfriendly==10.0
+idna @ file:///C:/b/abs_aad84bnnw5/croot/idna_1714398896795/work
+iopath==0.1.10
+Jinja2==3.1.3
+joblib==1.4.0
+jsonpatch==1.33
+jsonpath-python==1.0.6
+jsonpointer==2.4
+jsonschema==4.21.1
+jsonschema-specifications==2023.12.1
+kiwisolver==1.4.5
+langchain==0.1.16
+langchain-community==0.0.32
+langchain-core==0.1.42
+langchain-openai==0.1.3
+langchain-text-splitters==0.0.1
+langchainhub==0.1.15
+langdetect==1.0.9
+langserve==0.0.51
+langsmith==0.1.45
+layoutparser==0.3.4
+lxml==5.2.1
+markdown-it-py==3.0.0
+MarkupSafe==2.1.5
+marshmallow==3.21.1
+matplotlib==3.8.4
+mdurl==0.1.2
+mkl-service==2.4.0
+mkl_fft @ file:///C:/b/abs_f55mv94vyg/croot/mkl_fft_1725370278455/work
+mkl_random @ file:///C:/b/abs_21ydbzdu8d/croot/mkl_random_1725370276095/work
+mpmath @ file:///C:/b/abs_7833jrbiox/croot/mpmath_1690848321154/work
+multidict==6.0.5
+mypy-extensions==1.0.0
+networkx==3.3
+nltk==3.8.1
+numpy==1.26.4
+omegaconf==2.3.0
+onnx==1.16.0
+onnxruntime==1.15.1
+openai==1.17.0
+opencv-python==4.9.0.80
+orjson==3.10.0
+packaging==23.2
+pandas==2.2.2
+pdf2image==1.17.0
+pdfminer.six==20231228
+pdfplumber==0.11.0
+pikepdf==8.15.0
+pillow==10.3.0
+pillow_heif==0.16.0
+portalocker==2.8.2
+protobuf==4.25.3
+pyarrow==15.0.2
+pycocotools==2.0.7
+pycparser==2.22
+pydantic==2.7.0
+pydantic_core==2.18.1
+pydeck==0.8.0
+Pygments==2.17.2
+PyMuPDF==1.24.11
+pyparsing==3.1.2
+pypdf==4.2.0
+pypdfium2==4.29.0
+pyreadline3==3.4.1
+PySocks @ file:///C:/ci_311/pysocks_1676425991111/work
+pytesseract==0.3.10
+python-dateutil==2.9.0.post0
+python-iso639==2024.2.7
+python-magic==0.4.27
+python-multipart==0.0.9
+pytz==2024.1
+pywin32==306
+PyYAML==6.0.1
+rapidfuzz==3.8.1
+referencing==0.34.0
+regex==2023.12.25
+requests==2.31.0
+rich==13.7.1
+rpds-py==0.18.0
+safetensors==0.4.2
+scikit-learn==1.5.2
+scipy==1.13.0
+sentence-transformers==3.2.0
+six==1.16.0
+smmap==5.0.1
+sniffio==1.3.1
+soupsieve==2.5
+SQLAlchemy==2.0.29
+sse-starlette==2.1.0
+starlette==0.37.2
+streamlit==1.33.0
+sympy==1.12
+tabulate==0.9.0
+tenacity==8.2.3
+threadpoolctl==3.5.0
+tiktoken==0.6.0
+timm==0.9.16
+tokenizers==0.20.1
+toml==0.10.2
+toolz==0.12.1
+torch==2.2.2
+torchaudio==2.2.2
+torchvision==0.17.2
+tornado==6.4
+tqdm==4.66.2
+transformers==4.45.2
+types-requests==2.31.0.20240406
+typing-inspect==0.9.0
+typing_extensions @ file:///C:/b/abs_0as9mdbkfl/croot/typing_extensions_1715268906610/work
+tzdata==2024.1
+unstructured==0.13.2
+unstructured-client==0.18.0
+unstructured-inference==0.7.25
+unstructured.pytesseract==0.3.12
+urllib3==2.2.1
+uvicorn==0.29.0
+watchdog==4.0.0
+win-inet-pton @ file:///C:/ci_311/win_inet_pton_1676425458225/work
+wrapt==1.16.0
+yarl==1.9.4
+
 
 ## 느낀점 (Reflection)
 본 프로젝트는 인공지능을 학습하면서 처음으로 수행한 프로젝트로, 프로젝트의 흐름을 이해하는 데 다소 시간이 걸렸으나 팀원들과의 협력으로 만족스러운 결과를 달성할 수 있었습니다. 이번 경험을 통해 향후 AI 발전 방향과 기술 접목에 대한 아이디어가 보다 명확해졌습니다.
