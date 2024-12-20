@@ -137,7 +137,11 @@ if user_input := st.chat_input():
     add_history("user", user_input)
     st.chat_message("user").write(user_input)
     with st.chat_message("assistant"):
+<<<<<<< HEAD
         ollama = RemoteRunnable("Ngrok주소를 넣으세요"/llm/"") 
+=======
+        ollama = RemoteRunnable("http://0.0.0.0:8000/llm/") 
+>>>>>>> cac02d4 (add push)
         chat_container = st.empty()
         prompt = ChatPromptTemplate.from_template(RAG_PROMPT_TEMPLATE)
 

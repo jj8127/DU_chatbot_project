@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 FROM llama3.2_3B_q4.gguf
+=======
+<<<<<<< HEAD
+FROM EEVE-10B-Q5_K_M_15ep.gguf
+=======
+FROM llama3.2_3B_q4.gguf
+>>>>>>> b84c844 (Initial commit for DU_chatbot_project-main_ori)
+>>>>>>> cac02d4 (add push)
 
 TEMPLATE """{{- if .System }}
 <s>{{ .System }}</s>

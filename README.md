@@ -26,11 +26,91 @@
    - 해결책: 여러 차례의 테스트를 거쳐 최적의 설정값을 도출하였으며, 아래에 최종 사용한 환경 설정을 기록하였습니다.
 
 ## 사용 환경 (Environment)
+<<<<<<< HEAD
+GPU: 4060Ti
+=======
+<<<<<<< HEAD
+GPU: V100
+>>>>>>> cac02d4 (add push)
+Cuda capavility: 8.9
+Cuda SDK: 11.8
+pytorch==2.2.2 torchvision==0.17.2 torchaudio==2.2.2 pytorch-cuda=11.8 -c pytorch -c nvidia
+
+<<<<<<< HEAD
+=======
+---
+
+# 사용법 (How to Use)
+
+1. **필수 패키지 설치**  
+   `requirements.txt` 파일을 기반으로 필요한 패키지를 설치합니다.  
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+2. **모델 다운로드**  
+   Hugging Face CLI를 사용하여 모델 파일을 다운로드합니다.  
+   ```bash
+   huggingface-cli download \
+     byung-jun/DUChatbot-CapstoneDesign-GGUF \
+     llama3.2_3B_q4.gguf \
+     --local-dir <다운로드할_폴더_경로> \
+     --local-dir-use-symlinks False
+   ```
+
+3. **Ollama 모델 생성**  
+   다운로드한 모델 파일을 이용해 Ollama에서 모델을 생성합니다.  
+   ```bash
+   ollama create "<모델_이름>" -f <모델_파일>
+   ```
+
+4. **모델 확인**  
+   아래 명령어를 실행했을 때, 생성한 모델 이름이 출력되면 정상적으로 생성된 것입니다.  
+   ```bash
+   ollama list
+   ```
+
+5. **모델 테스트**  
+   모델이 정상 작동하는지 확인합니다.  
+   ```bash
+   ollama run "<모델_이름>"
+   ```
+
+6. **앱 설정**  
+   `app/llm.py`와 `app/chat.py` 파일에서 생성한 모델 이름을 입력합니다.
+
+7. **서버 실행**  
+   서버를 실행합니다.  
+   ```bash
+   python app/server.py
+   ```
+
+8. **포트 포워딩 설정**  
+   `ngrok`을 사용해 포트 포워딩을 설정합니다.  
+   ```bash
+   ngrok http 8000
+   ```
+
+9. **원격 주소 설정**  
+   생성된 `ngrok` 주소를 `example/main.py`의 `RemoteRunnable` 함수에 추가합니다.
+
+10. **앱 실행**  
+    Streamlit을 통해 앱을 실행합니다.  
+    ```bash
+    streamlit run example/main.py
+    ```
+
+---
+
+위 단계를 순차적으로 진행하면 모델과 앱이 정상적으로 작동합니다! 🚀
+=======
 GPU: 4060Ti
 Cuda capavility: 8.9
 Cuda SDK: 11.8
 pytorch==2.2.2 torchvision==0.17.2 torchaudio==2.2.2 pytorch-cuda=11.8 -c pytorch -c nvidia
 
+>>>>>>> b84c844 (Initial commit for DU_chatbot_project-main_ori)
+>>>>>>> cac02d4 (add push)
 
 ## 느낀점 (Reflection)
 본 프로젝트는 인공지능을 학습하면서 처음으로 수행한 프로젝트로, 프로젝트의 흐름을 이해하는 데 다소 시간이 걸렸으나 팀원들과의 협력으로 만족스러운 결과를 달성할 수 있었습니다. 이번 경험을 통해 향후 AI 발전 방향과 기술 접목에 대한 아이디어가 보다 명확해졌습니다.
