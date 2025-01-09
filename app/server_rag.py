@@ -25,7 +25,7 @@ RAG_PROMPT_TEMPLATE = """
 질문:
 {question}
 
-질문의 핵심만 파악하여 간결하게 1-2문장으로 답변하고, 한국어로만 대답하세요 불필요한 대답은 하지 마세요.
+질문의 핵심만 파악하여 간결하게 1-2문장으로 답변하고, 불필요한 설명은 피하며 동서울대학교와 관련된 정보만 제공하세요.
 
 답변:
 """
@@ -56,11 +56,15 @@ def perform_rag(question: str):
 
     # 컨텍스트 추출
     context = retriever.get_relevant_documents(question)
+    #print("Retrieved Context: ", "\n\n".join(doc.page_content for doc in context))  # context 확인
     return "\n\n".join(doc.page_content for doc in context)
 
 def query_llm(context: str, question: str):
-    # HumanMessage 형식으로 입력 메시지 생성
-    message = HumanMessage(content=f"{context}\n\n질문: {question}")
+    # RAG_PROMPT_TEMPLATE을 사용하여 메시지 생성
+    prompt = ChatPromptTemplate.from_template(RAG_PROMPT_TEMPLATE)
+    formatted_prompt = prompt.format(context=context, question=question)  # 템플릿에 값 삽입
+    #print("Formatted Prompt: ", formatted_prompt)  # 포맷된 템플릿 확인
+    message = HumanMessage(content=formatted_prompt)  # HumanMessage 객체 생성
     response = model([message])  # LLM 모델 호출 (리스트 형태로 전달)
     return response.content  # 응답 내용 반환
 
@@ -74,15 +78,12 @@ async def rag_query(request: QueryRequest):
         context = perform_rag(request.question)
         # LLM 쿼리로 응답 생성
         answer = query_llm(context, request.question)
-        # 결과 반환 (컨텍스트 포함)
-        return {
-            "question": request.question,
-            "context": context,
-            "answer": answer
-        }
+        # 결과 반환 (answer만 포함)
+        return {"answer": answer}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=8004)

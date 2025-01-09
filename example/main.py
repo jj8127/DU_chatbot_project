@@ -117,7 +117,7 @@ retriever = db.as_retriever(search_kwargs={"k": 2})
 
 st.sidebar.title("채팅 목록")
 option = st.sidebar.selectbox(
-    "채팅목록을 선택하세요.:", ("동서울대학교 휴학 신청", "논문 요청", "장학생 준비")
+    "채팅목록을 선택하세요.:", ("", "논문 요청", "장학생 준비")
 )
 
 st.write(f"{option}")
@@ -137,11 +137,10 @@ if user_input := st.chat_input():
     add_history("user", user_input)
     st.chat_message("user").write(user_input)
     with st.chat_message("assistant"):
-<<<<<<< HEAD
-        ollama = RemoteRunnable("Ngrok주소를 넣으세요"/llm/"") 
-=======
-        ollama = RemoteRunnable("http://0.0.0.0:8000/llm/") 
->>>>>>> cac02d4 (add push)
+
+        #ollama = RemoteRunnable("Ngrok주소를 넣으세요"/llm/"") 
+        ollama = RemoteRunnable("http://0.0.0.0:8002/llm/") 
+
         chat_container = st.empty()
         prompt = ChatPromptTemplate.from_template(RAG_PROMPT_TEMPLATE)
 
