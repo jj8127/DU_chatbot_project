@@ -26,7 +26,7 @@
    - 해결책: 여러 차례의 테스트를 거쳐 최적의 설정값을 도출하였으며, 아래에 최종 사용한 환경 설정을 기록하였습니다.
 
 ## 사용 환경 (Environment)
-<<<<<<< HEAD
+HEAD
 GPU: 4060Ti
 =======
 <<<<<<< HEAD
@@ -36,7 +36,7 @@ Cuda capavility: 8.9
 Cuda SDK: 11.8
 pytorch==2.2.2 torchvision==0.17.2 torchaudio==2.2.2 pytorch-cuda=11.8 -c pytorch -c nvidia
 
-<<<<<<< HEAD
+HEAD
 =======
 ---
 
