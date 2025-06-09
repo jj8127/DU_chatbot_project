@@ -29,9 +29,8 @@
 HEAD
 GPU: 4060Ti
 =======
-<<<<<<< HEAD
+HEAD
 GPU: V100
->>>>>>> cac02d4 (add push)
 Cuda capavility: 8.9
 Cuda SDK: 11.8
 pytorch==2.2.2 torchvision==0.17.2 torchaudio==2.2.2 pytorch-cuda=11.8 -c pytorch -c nvidia
