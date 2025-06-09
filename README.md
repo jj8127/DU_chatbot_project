@@ -109,8 +109,6 @@ Cuda capavility: 8.9
 Cuda SDK: 11.8
 pytorch==2.2.2 torchvision==0.17.2 torchaudio==2.2.2 pytorch-cuda=11.8 -c pytorch -c nvidia
 
->>>>>>> b84c844 (Initial commit for DU_chatbot_project-main_ori)
->>>>>>> cac02d4 (add push)
 
 ## 느낀점 (Reflection)
 본 프로젝트는 인공지능을 학습하면서 처음으로 수행한 프로젝트로, 프로젝트의 흐름을 이해하는 데 다소 시간이 걸렸으나 팀원들과의 협력으로 만족스러운 결과를 달성할 수 있었습니다. 이번 경험을 통해 향후 AI 발전 방향과 기술 접목에 대한 아이디어가 보다 명확해졌습니다.
