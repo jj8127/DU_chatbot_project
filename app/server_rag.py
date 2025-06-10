@@ -6,7 +6,6 @@ from pydantic import BaseModel, Field
 from langchain_core.messages import HumanMessage, AIMessage, SystemMessage
 from langserve import add_routes
 from llm import llm as model
-import fitz  # PyMuPDF
 from langchain_community.embeddings.huggingface import HuggingFaceEmbeddings
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
