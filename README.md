@@ -26,18 +26,10 @@
    - 해결책: 여러 차례의 테스트를 거쳐 최적의 설정값을 도출하였으며, 아래에 최종 사용한 환경 설정을 기록하였습니다.
 
 ## 사용 환경 (Environment)
-HEAD
-GPU: 4060Ti
-=======
-HEAD
 GPU: V100
 Cuda capavility: 8.9
 Cuda SDK: 11.8
 pytorch==2.2.2 torchvision==0.17.2 torchaudio==2.2.2 pytorch-cuda=11.8 -c pytorch -c nvidia
-
-HEAD
-=======
----
 
 # 사용법 (How to Use)
 
@@ -102,26 +94,8 @@ HEAD
 ---
 
 위 단계를 순차적으로 진행하면 모델과 앱이 정상적으로 작동합니다! 🚀
-=======
-GPU: 4060Ti
-Cuda capavility: 8.9
-Cuda SDK: 11.8
-pytorch==2.2.2 torchvision==0.17.2 torchaudio==2.2.2 pytorch-cuda=11.8 -c pytorch -c nvidia
 
 
 ## 느낀점 (Reflection)
 본 프로젝트는 인공지능을 학습하면서 처음으로 수행한 프로젝트로, 프로젝트의 흐름을 이해하는 데 다소 시간이 걸렸으나 팀원들과의 협력으로 만족스러운 결과를 달성할 수 있었습니다. 이번 경험을 통해 향후 AI 발전 방향과 기술 접목에 대한 아이디어가 보다 명확해졌습니다.
-
-## 참고 자료 (Resources)
-프로젝트와 관련된 데모 영상을 통해 DU Chatbot의 작동 방식을 확인할 수 있습니다.
-[![데모 영상](https://img.youtube.com/vi/VkcaigvTrug/0.jpg)](https://youtu.be/VkcaigvTrug)
-
-## License
-MIT License
-
-Copyright (c) 2024, 테디노트
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of
 
