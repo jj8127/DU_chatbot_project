@@ -13,8 +13,6 @@
 ## 프로젝트 로드맵 (Project Roadmap)
 ![스크린샷 2024-10-22 195158](https://github.com/user-attachments/assets/9db9a29b-bbd3-489e-a319-7ef2bafd4c6d)
 
-![1730364025513-14a09d46-e92f-4e2c-a941-02df5b6c8e22_1](https://github.com/user-attachments/assets/746edd9d-6b58-48e7-8642-77128679d929)
-
 ## 기술적 접근 방법 (Technical Approach)
 
 ### PEFT (Parameter Efficient Fine-Tuning)
