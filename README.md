@@ -12,15 +12,21 @@
 
 ## 프로젝트 로드맵 (Project Roadmap)
 ![스크린샷 2024-10-22 195158](https://github.com/user-attachments/assets/9db9a29b-bbd3-489e-a319-7ef2bafd4c6d)
+![image](https://github.com/user-attachments/assets/f07af4b2-81f6-4700-bb9f-63705a682ae3)
+
 
 ## 기술적 접근 방법 (Technical Approach)
 
 ### PEFT (Parameter Efficient Fine-Tuning)
 - 기존 LLM 전체를 재학습하는 대신 소규모 행렬(LoRA)을 추가하여 파라미터 수를 약 3.35% 수준으로 효율적으로 줄였습니다.
+- ![image](https://github.com/user-attachments/assets/2c7c71a6-e4ee-4c84-a7e0-e92b69d65e17)
+
 
 ### RAG (Retrieval-Augmented Generation)
 - 외부 데이터베이스로부터 문서를 검색하고, 이를 기반으로 보다 정확하고 신뢰할 수 있는 답변을 생성합니다.
 - 데이터는 동서울대학교 웹사이트에서 크롤링한 Q&A 데이터(총 720개)로 구성되었습니다.
+- ![image](https://github.com/user-attachments/assets/301404df-9f9c-4e73-9fc8-9b03fb4bc663)
+
 
 ## 성능 평가 (Evaluation)
 모델의 성능 평가를 위해 다음과 같은 N-gram 기반 메트릭을 사용했습니다:
@@ -28,12 +34,19 @@
 - **METEOR**: 단어 정확도 및 구조적 일관성 평가
 - **ROUGE**: 참조 문장의 정보가 얼마나 잘 포착되었는지 평가
 
-실험 결과, PEFT와 RAG의 혼합형 모델이 최고 성능을 나타냈으며, 오버피팅을 방지하기 위해 적절한 epoch 수를 최적화하였습니다.
+오버피팅을 방지하기 위해 적절한 epoch 수를 최적화하였습니다.
+![image](https://github.com/user-attachments/assets/caca49b8-2696-4c49-84f1-3867488dc450)
+
+실험 결과, PEFT와 RAG의 혼합형 모델이 최고 성능을 나타냈습니다.
+![image](https://github.com/user-attachments/assets/374ab6ef-a38f-44c1-b6bd-c747c086a4b0)
+
 
 ## 모바일 애플리케이션 (Mobile Application)
 안드로이드와 iOS 환경에서 모두 사용 가능하며, 다음과 같은 도구와 언어를 사용하여 개발하였습니다:
 - **Android**: Kotlin, Android Studio
 - **iOS**: Swift, Xcode
+- ![image](https://github.com/user-attachments/assets/fb646b48-eb67-4edb-a2c2-38a54c88ed8d)
+
 
 음성 기반 인터페이스(STT 및 TTS)를 제공하여 사용자의 접근성을 높였습니다.
 
