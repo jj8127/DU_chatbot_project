@@ -19,13 +19,13 @@
 
 ### PEFT (Parameter Efficient Fine-Tuning)
 - 기존 LLM 전체를 재학습하는 대신 소규모 행렬(LoRA)을 추가하여 파라미터 수를 약 3.35% 수준으로 효율적으로 줄였습니다.
-- ![image](https://github.com/user-attachments/assets/2c7c71a6-e4ee-4c84-a7e0-e92b69d65e17)
+  ![image](https://github.com/user-attachments/assets/2c7c71a6-e4ee-4c84-a7e0-e92b69d65e17)
 
 
 ### RAG (Retrieval-Augmented Generation)
 - 외부 데이터베이스로부터 문서를 검색하고, 이를 기반으로 보다 정확하고 신뢰할 수 있는 답변을 생성합니다.
 - 데이터는 동서울대학교 웹사이트에서 크롤링한 Q&A 데이터(총 720개)로 구성되었습니다.
-- ![image](https://github.com/user-attachments/assets/301404df-9f9c-4e73-9fc8-9b03fb4bc663)
+  ![image](https://github.com/user-attachments/assets/301404df-9f9c-4e73-9fc8-9b03fb4bc663)
 
 
 ## 성능 평가 (Evaluation)
